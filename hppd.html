@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Sinh Nhật Chị Điệp</title>
+    <style>
+        body {
+            background-color: #ffe6f2;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            top: 50px;
+        }
+        h1 {
+            color: #ff3366;
+            font-size: 40px;
+            animation: fadeIn 2s ease-in;
+        }
+        .birthday-img {
+            width: 300px;
+            height: auto;
+            position: absolute;
+            animation: slideIn 2s ease-out forwards;
+        }
+        #img-left {
+            left: -350px;
+            animation-name: slideInFromLeft;
+        }
+        #img-right {
+            right: -350px;
+            animation-name: slideInFromRight;
+        }
+        .gift-button {
+            background-color: #ff3366;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.3s;
+            position: relative;
+            z-index: 5;
+        }
+        .gift-button:hover {
+            transform: scale(1.1);
+        }
+        .message {
+            display: none;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            width: 80%;
+            max-width: 400px;
+        }
+        .message p {
+            color: #333;
+            font-size: 18px;
+        }
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            color: #ff3366;
+            animation: fall 3s linear infinite;
+            z-index: 1;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100px); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+        @keyframes slideInFromLeft {
+            0% { left: -350px; }
+            100% { left: 50px; }
+        }
+        @keyframes slideInFromRight {
+            0% { right: -350px; }
+            100% { right: 50px; }
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chúc Mừng Sinh Nhật Điệp! 🎉</h1>
+        <img id="img-left" class="birthday-img" src="image/dg.jpg" alt="Bánh sinh nhật">
+        <img id="img-right" class="birthday-img" src="image/dt.jpg" alt="Quà tặng">
+        <button class="gift-button" onclick="openGift()">Mở Quà Nào!</button>
+    </div>
+    <audio id="birthdaySong" autoplay loop>
+        <source src="happy-birthday.mp3" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ thẻ audio.
+    </audio>
+    <div id="message" class="message">
+        <p>Chị Điệp ơi, hôm nay là ngày đặc biệt!</p>
+        <p>Chúc chị một sinh nhật thật hạnh phúc, luôn xinh đẹp và mãi vui vẻ nhé!</p>
+        <p>Hy vọng sẽ có dịp đón sinh nhật cùng chị trong tương lai.</p>
+    </div>
+
+    <script>
+        function openGift() {
+            const message = document.getElementById("message");
+            if (message.style.display === "block") {
+                message.style.display = "none"; // Đóng nếu đang mở
+            } else {
+                message.style.display = "block"; // Mở nếu đang đóng
+            }
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 2 + 2 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
